@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+    # Bases de datos
+    mysql_inventario:
+        image: mysql/mysql-server:latest
+        ports:
+            - "3307:3306"
+        restart: always
+        volumes:
+            - db_volume_universidad:/var/lib/mysql
+            - ./db/universidad.sql:/docker-entrypoint-initdb.d/universidad.sql:ro
+        command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_0900_ai_ci']
+        environment: 
+            MYSQL_ROOT_PASSWORD: "root"
+            MYSQL_HOST: localhost
+            MYSQL_DATABASE: "universidad"
+            MYSQL_USER: "root"
+            # MYSQL_USER: "admin"
+            # MYSQL_PASSWORD: "admin"
+        container_name: db_universidad
+
+    simple_app:
+        image: console_app_universidad
+        depends_on: 
+            - "mysql_inventario"
+        build: 
+            context: ./Univesidad/
+            dockerfile: Dockerfile
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        environment: 
+            DB_CONNECTION_STRING: "server=localhost;port=3307;user=juan;password=Contrasena99;database=Universidad"
+        container_name: app_Universidad
+
+volumes:
+    db_volume_universidad:
