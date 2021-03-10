@@ -30,7 +30,7 @@ services:
         stdin_open: true # docker run -i
         tty: true        # docker run -t
         environment: 
-            DB_CONNECTION_STRING: "server=localhost;port=3307;user=juan;password=Contrasena99;database=Universidad"
+            DB_CONNECTION_STRING: "server=mysql_inventario;user=juan;password=Contrasena99;database=universidad"
         container_name: app_Universidad
 
 volumes:

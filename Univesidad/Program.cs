@@ -52,10 +52,7 @@ namespace Univesidad
                 }catch(FormatException){
                     Console.WriteLine("Error al introducir los datos");
                 }
-            }while(respuestaUsuario > 0 && respuestaUsuario < 4  );
-
-
-            
+            }while(respuestaUsuario > 0 && respuestaUsuario < 4 );
 
         }
 

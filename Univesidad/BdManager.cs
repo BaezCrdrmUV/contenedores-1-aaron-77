@@ -11,7 +11,8 @@ namespace Univesidad{
         public BdManager()
         {
             connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
-             //connectionString = "server=localhost;port=3307;user=juan;password=Contrasena99;database=universidad";
+            Console.WriteLine(connectionString);
+            //connectionString = "server=localhost;port=3307;user=juan;password=Contrasena99;database=universidad";
             connection = new MySqlConnection(connectionString);
         }
 
